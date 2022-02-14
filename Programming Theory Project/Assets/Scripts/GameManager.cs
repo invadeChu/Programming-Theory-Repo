@@ -34,6 +34,7 @@ public class GameManager : MonoBehaviour
     private void SpawnBox()
     {
         Vector3 position = new Vector3(Random.Range(-xBoundary, xBoundary), Random.Range(1.5f, yBoundary));
-        Instantiate(boxObject, position, boxObject.transform.rotation);
+        //Instantiate(boxObject, position, boxObject.transform.rotation);
+        Instantiate(boxObject, position, Random.rotation);
     }
 }
