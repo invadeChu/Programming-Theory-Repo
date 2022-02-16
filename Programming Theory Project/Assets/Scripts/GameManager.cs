@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class GameManager : MonoBehaviour
 {
     public Camera gameCamera;
-    public GameObject boxObject;
+    public GameObject[] boxObject;
     public string playerName;
     public bool nameIsSet;
 
@@ -22,6 +23,9 @@ public class GameManager : MonoBehaviour
         descriptionText = GameObject.Find("Description Text");
         titleScreen.SetActive(true);
         descriptionText.SetActive(false);
+
+        GameObject playerNameText = GameObject.Find("Input Field");
+        EventSystem.current.SetSelectedGameObject(playerNameText, null);
     }
 
     public void Update()
@@ -52,6 +56,6 @@ public class GameManager : MonoBehaviour
     {
         Vector3 position = new Vector3(Random.Range(-xBoundary, xBoundary), Random.Range(1.5f, yBoundary));
         //Instantiate(boxObject, position, boxObject.transform.rotation);
-        Instantiate(boxObject, position, Random.rotation);
+        Instantiate(boxObject[Random.Range(0, 2)], position, Random.rotation);
     }
 }

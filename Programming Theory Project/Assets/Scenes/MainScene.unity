@@ -1300,7 +1300,7 @@ MonoBehaviour:
   m_SelectionColor: {r: 0.65882355, g: 0.80784315, b: 1, a: 0.7529412}
   m_Text: 
   m_CaretBlinkRate: 0.85
-  m_CaretWidth: 1
+  m_CaretWidth: 5
   m_ReadOnly: 0
   m_RichText: 1
   m_GlobalFontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1540,9 +1540,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameCamera: {fileID: 963194227}
-  boxObject: {fileID: 3941896307995985607, guid: a2849cdef2c80ea4dba79b6c49e231bd, type: 3}
-  titleScreen: {fileID: 1892689723}
-  descriptionText: {fileID: 916032275}
+  boxObject:
+  - {fileID: 3941896307995985607, guid: a2849cdef2c80ea4dba79b6c49e231bd, type: 3}
+  - {fileID: 3941896307995985607, guid: 6259ddd079ce1674e89687d7e5cc47ff, type: 3}
   playerName: 
   nameIsSet: 0
 --- !u!4 &1812841947
@@ -1685,5 +1685,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a09d713921998694fbf73ccecfb1a923, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textInputObject: {fileID: 926723617}
-  playerName: 
