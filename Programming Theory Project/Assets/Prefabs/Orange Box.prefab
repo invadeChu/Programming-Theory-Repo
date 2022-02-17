@@ -108,3 +108,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55a94e2156b5cdb4193e2159619893d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  boxColor: {r: 0, g: 0, b: 0, a: 0}
+  lifeStart: 0
+  lifeSpan: 3
+  rotateAngle: 24
+  sizeScale: 3

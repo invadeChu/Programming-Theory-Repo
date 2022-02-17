@@ -2,31 +2,34 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * OrangeBox is orange with a 1:1:1 scale and rotates on x axis
+ */
 public class OrangeBox : BoxThing
 {
-    private float _sizeMultiplier = 1.5f;
-    private float _rotateSpeed = -12f;
-    public override void SetName()
-    {
-        _boxName = "Orange Box";
-    }
-
     public override void SetColor()
     {
-        _boxColor = "Orange";
         Renderer boxRenderer = GetComponent<Renderer>();
-        boxRenderer.material.color = new Color(1f, 0.4705882f, 0f, 1f);
+        boxRenderer.material.color = new Color(1f, 0.47f, 0f, 1f);
     }
-
-    public void Awake()
+    public override void SetRotation()
+    {
+        transform.Rotate(rotateAngle * Time.deltaTime, 0f, 0f, Space.World);
+    }
+    public override void SetScale()
     {
         Vector3 objectScale = transform.localScale;
-        transform.localScale = new Vector3(objectScale.x * _sizeMultiplier, objectScale.y, objectScale.z);
-        SetColor();
+        transform.localScale = new Vector3(objectScale.x * sizeScale, objectScale.y, objectScale.z);
     }
-
-    public void Update()
+        public void Awake()
     {
-        transform.Rotate(_rotateSpeed * Time.deltaTime, 0f, 0f, Space.World);
+        SetColor();
+        SetScale();
+        lifeStart = Time.time;
+    }
+        public void Update()
+    {
+        SetRotation();
+        CheckLifeSpan();
     }
 }

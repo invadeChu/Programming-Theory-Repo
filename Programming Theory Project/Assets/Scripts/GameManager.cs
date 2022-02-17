@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
     {
         titleScreen = GameObject.Find("Title Screen");
         descriptionText = GameObject.Find("Description Text");
+
         titleScreen.SetActive(true);
         descriptionText.SetActive(false);
 
@@ -45,7 +46,6 @@ public class GameManager : MonoBehaviour
                 RaycastHit hit;
                 if (Physics.Raycast(ray, out hit))
                 {
-                    //hit.collider.gameObject.SetActive(false);
                     Destroy(hit.collider.gameObject);
                 }
             }
@@ -55,7 +55,12 @@ public class GameManager : MonoBehaviour
     private void SpawnBox()
     {
         Vector3 position = new Vector3(Random.Range(-xBoundary, xBoundary), Random.Range(1.5f, yBoundary));
-        //Instantiate(boxObject, position, boxObject.transform.rotation);
         Instantiate(boxObject[Random.Range(0, 2)], position, Random.rotation);
+
+        // put text where box was instantiated
+        Vector2 textPos = position;
+        Vector2 viewportPos = Camera.main.WorldToViewportPoint(textPos);
+        descriptionText.GetComponent<RectTransform>().anchorMin = viewportPos;
+        descriptionText.GetComponent<RectTransform>().anchorMax = viewportPos;
     }
 }

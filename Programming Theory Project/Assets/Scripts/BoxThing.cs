@@ -4,16 +4,32 @@ using UnityEngine;
 
 public class BoxThing : MonoBehaviour
 {
-    public string _boxName { get; set; }
-    public string _boxColor { get; set; }
+    public Color boxColor;
+    public float lifeStart = 0.0f;
+    public float lifeSpan = 3.0f;
+    public float rotateAngle = 12.0f;
+    public float sizeScale = 1.0f;
 
-    public virtual void SetName()
+    public void CheckLifeSpan()
     {
-        Debug.Log("This box is called: " + _boxName);
+        if (lifeStart == 0.0f)
+        {
+            lifeStart = Time.time;
+        }
+        float currentLifeTime = Time.time - lifeStart;
+        if (currentLifeTime > lifeSpan)
+            Destroy(gameObject);
     }
-
     public virtual void SetColor()
     {
-        Debug.Log("This box's color is: " + _boxColor);
+        Debug.Log("Set the box color");
+    }
+    public virtual void SetRotation()
+    {
+        Debug.Log("Set the box rotation");
+    }
+    public virtual void SetScale()
+    {
+        Debug.Log("Set the box scale");
     }
 }
