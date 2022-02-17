@@ -8,8 +8,8 @@ public class GameManager : MonoBehaviour
 {
     public Camera gameCamera;
     public GameObject[] boxObject;
-    public string playerName;
-    public bool nameIsSet;
+    public string playerName { get; private set; } // Encapsulation
+    public bool nameIsSet { get; private set; } // Encapsulation
 
     private GameObject titleScreen;
     private GameObject descriptionText;
@@ -51,11 +51,15 @@ public class GameManager : MonoBehaviour
             }
         }
     }
-
+    public void SetPlayerName(string newPlayerName)
+    {
+        playerName = newPlayerName;
+        nameIsSet = true;
+    }
     private void SpawnBox()
     {
         Vector3 position = new Vector3(Random.Range(-xBoundary, xBoundary), Random.Range(1.5f, yBoundary));
-        Instantiate(boxObject[Random.Range(0, 2)], position, Random.rotation);
+        Instantiate(boxObject[Random.Range(0, boxObject.Length)], position, Random.rotation);
 
         // put text where box was instantiated
         Vector2 textPos = position;

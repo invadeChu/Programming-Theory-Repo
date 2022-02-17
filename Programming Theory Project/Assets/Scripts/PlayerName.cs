@@ -9,7 +9,7 @@ public class PlayerName : MonoBehaviour
     {
         GameObject textInputObject = GameObject.Find("Player Name Text");
         string s = textInputObject.GetComponent<TextMeshProUGUI>().text;
-        GameObject.Find("Game Manager").GetComponent<GameManager>().playerName = s;
-        GameObject.Find("Game Manager").GetComponent<GameManager>().nameIsSet = true;
+
+        GameObject.Find("Game Manager").GetComponent<GameManager>().SetPlayerName(s); // Encapsulation
     }
 }

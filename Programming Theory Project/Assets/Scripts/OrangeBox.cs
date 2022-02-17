@@ -3,33 +3,28 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /*
- * OrangeBox is orange with a 1:1:1 scale and rotates on x axis
+ * OrangeBox is orange and scaled
  */
-public class OrangeBox : BoxThing
+public class OrangeBox : BoxThing // Inheritance
 {
-    public override void SetColor()
+    public override void SetColor() // Polymorphism - method overriding
     {
         Renderer boxRenderer = GetComponent<Renderer>();
         boxRenderer.material.color = new Color(1f, 0.47f, 0f, 1f);
     }
-    public override void SetRotation()
-    {
-        transform.Rotate(rotateAngle * Time.deltaTime, 0f, 0f, Space.World);
-    }
-    public override void SetScale()
+    private void SetScale() // Abstraction
     {
         Vector3 objectScale = transform.localScale;
-        transform.localScale = new Vector3(objectScale.x * sizeScale, objectScale.y, objectScale.z);
+        transform.localScale = new Vector3(objectScale.x * sizeScale, objectScale.y * sizeScale, objectScale.z * sizeScale);
     }
-        public void Awake()
+    public void Awake()
     {
         SetColor();
         SetScale();
         lifeStart = Time.time;
     }
-        public void Update()
+    public void Update()
     {
-        SetRotation();
-        CheckLifeSpan();
+        CheckLifeSpan(2); // Polymorphism - method overloading
     }
 }

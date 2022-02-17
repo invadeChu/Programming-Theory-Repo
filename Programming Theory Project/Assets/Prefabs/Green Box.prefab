@@ -112,4 +112,4 @@ MonoBehaviour:
   lifeStart: 0
   lifeSpan: 3
   rotateAngle: 12
-  sizeScale: 3
+  sizeScale: 0
